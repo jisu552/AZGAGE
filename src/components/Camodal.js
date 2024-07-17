@@ -5,12 +5,6 @@ import { Button } from 'react-bootstrap';
 // import "../css/Camodal.css"
 
 const Camodal = ({ show, handleClose }) => {
-
-
-
-
-
-
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton style={{backgroundColor : '#F89DFF'}}>
