@@ -18,5 +18,18 @@ router.get('/', (req, res)=>{
 })
 
 
+router.get('/checkId/:userId', (request, response) => {
+    const userId = request.params.userId;
+    let sql = "SELECT COUNT(*) AS count FROM user WHERE user_id = ?";
+    conn.query(sql, [userId], (err, res) => {
+        if (err) {
+            return res.status(500).json({error : err.message});
+        }
+        const count = res[0].count;
+        response.json(count > 0);
+    })
+})
+
+
 // 4-2. 라우터 모듈 내보내기
 module.exports = router;
