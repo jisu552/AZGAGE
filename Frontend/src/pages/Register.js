@@ -44,10 +44,31 @@ const Register = () => {
         if (name === "password"){
             setPassword(value);
         }
-
-
+        if (name === "passwordCheck"){
+          setPasswordCheck(value);
+        }
+        if (name === "userName"){
+          setUserNickName(value);
+        } 
     };
 
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+
+      if(!isIdValid) {
+        Swal.fire({
+          icon: 'error',
+          text: '아이디 중복 확인을 해주세요.',
+          confirmButtonText: '확인'
+        });
+        return;
+      }
+      if(password !== passwordCheck){
+        Swal.fire({
+          
+        })
+      }
+    }
     function isPasswordMatching(password, confirmPassword){
         return password == confirmPassword
     }
@@ -68,13 +89,13 @@ const Register = () => {
 
         return re.test(id);
     }
-    function formatPhoneNumber(number){
-        const cleaned = number.replace(/\D/g, "");
+    function formatPhoneNumber(Number){
+        const cleaned = Number.replace(/\D/g, "");
         if (cleaned.length < 4) return cleaned;
-        const match = cleaned.match(/(\d{3})(\d{4}{\d{4}})/);
-        return match ?`${match[1]}-${match[2]}-${match[3]}` :number;
-
+        const match = cleaned.match(/(\d{3})(\d{4})(\d{4})/);
+        return match ? `${match[1]}-${match[2]}-${match[3]}` : Number;
     }
+    
   return (
     
     <Container className="mt-5">
@@ -88,7 +109,7 @@ const Register = () => {
           />
         </div>
 
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <InputGroup className="mb-3 w-75">
             <InputGroup.Text>
               <FontAwesomeIcon icon={faUser} />
@@ -154,8 +175,9 @@ const Register = () => {
               type="password"
               placeholder="비밀번호 확인"
               className="input-field"
+              name = "passwordCheck"
               value={passwordCheck}
-              onChange={(e) => setPasswordCheck(e.target.value)}
+              onChange={handleInputChange}
             />
           </InputGroup>
           <Form.Text
@@ -178,12 +200,13 @@ const Register = () => {
               <FontAwesomeIcon icon={faLock} />
             </InputGroup.Text>
             <Form.Control
-              type="number"
+              type="text"
               placeholder="휴대폰 번호"
               name="phoneNumber"
               className="input-field"
+              maxLength="13"
               value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              onChange={handleInputChange}
             />
           </InputGroup>
           <Button
