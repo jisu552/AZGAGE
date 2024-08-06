@@ -1,7 +1,7 @@
 // 4-1. 라우터 모듈 가져오기
 const express = require('express');
 const router = express.Router();
-
+const conn = require('../config/database')
 
 // 4-3. 메인페이지 경로 설정
 //      => server.js 추가 작업
