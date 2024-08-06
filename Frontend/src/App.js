@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Navs from './components/Navs';
 import Login from './pages/Login';
 import Board from './pages/Board';
+import Register from './pages/Register';
 
 
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/Login" element={<Login/>}/>
         <Route path="/Board" element={<Board/>}/>
+        <Route path="/Register" element={<Register/>}/>
       </Routes>
     </div>
   );
