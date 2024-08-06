@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useCallback, useState } from "react";
 import { Button, Col, Container, Form, InputGroup, Nav, Row } from "react-bootstrap";
 import Swal from "sweetalert2";
-import axios from "axios";
+import axios from "../Axios";
 
 const Register = () => {
     const [username, setUsername] = useState("");
