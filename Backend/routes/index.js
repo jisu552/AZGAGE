@@ -29,6 +29,14 @@ router.get('/checkId/:userId', (request, response) => {
         response.json(count > 0);
     })
 })
+router.post('/register', (req, res)=>{
+    const userdata = req.data;
+    // let sql = `INSERT INTO`
+    // conn.query(sql,[
+
+    // ],(err,result))
+});
+// DB관련
 
 
 // 4-2. 라우터 모듈 내보내기

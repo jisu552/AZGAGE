@@ -6,6 +6,7 @@ import Navs from './components/Navs';
 import Login from './pages/Login';
 import Board from './pages/Board';
 import Register from './pages/Register';
+import BoardDetail from './pages/BoardDetail';
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/Login" element={<Login/>}/>
         <Route path="/Board" element={<Board/>}/>
         <Route path="/Register" element={<Register/>}/>
+        <Route path="/Board/:board_idx" element={<BoardDetail/>}/>
       </Routes>
     </div>
   );
