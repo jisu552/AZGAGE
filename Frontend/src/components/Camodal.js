@@ -11,6 +11,12 @@ const Camodal = ({ show, handleClose }) => {
         <Modal.Title className='headertx'>문제 출제</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        제목 입력
+        <Form.Control
+          type='text'
+          placeholder='제목을 입력해주세요.'
+          className='my-3 ca-input'
+        />
         문제 입력
         <Form.Control
           type='text'
