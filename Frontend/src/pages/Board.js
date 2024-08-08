@@ -58,7 +58,7 @@ function Board() {
         </Row>
         <Row>
           <Col>
-            <Button onClick={qdd}>출제하기</Button>
+            <Button className='abtnb' onClick={qdd}>출제하기</Button>
           </Col>
         </Row>
         <Camodal

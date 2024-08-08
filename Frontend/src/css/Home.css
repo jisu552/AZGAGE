@@ -1,4 +1,4 @@
-.btn-primary{
+/* .btn-primary{
   --bs-btn-bg : white !important;
   color: black;
   --bs-btn-border-color: #343a40;
@@ -10,7 +10,7 @@
   --bs-btn-hover-border-color: #fdb21d;
   --bs-btn-active-border-color: #fdb21d;
   --bs-btn-active-bg: #fdb21d;
-}
+} */
 .button-container {
   display: flex;
   justify-content: center; /* 버튼을 중앙으로 정렬 */
@@ -35,4 +35,34 @@
 }
 .user {
   margin-left: 10px;
+}
+
+
+.abtn{
+  --bs-btn-hover-bg: #fdb21d;
+  --bs-btn-hover-border-color: #fdb21d;
+  --bs-btn-active-border-color: #fdb21d;
+  --bs-btn-active-bg: #fdb21d;
+  --bs-btn-bg : white;
+  color: black;
+  --bs-btn-border-color: #343a40;
+  --bs-btn-padding-x: 2rem;
+  --bs-btn-padding-y: 0.5rem;
+  border: 3px solid black;
+  margin-right: 5rem ;
+
+}
+
+.abtnb{
+  --bs-btn-hover-bg: #fdb21d;
+  --bs-btn-hover-border-color: #fdb21d;
+  --bs-btn-active-border-color: #fdb21d;
+  --bs-btn-active-bg: #fdb21d;
+  --bs-btn-bg : white;
+  color: black;
+  --bs-btn-border-color: #343a40;
+  --bs-btn-padding-x: 2rem;
+  --bs-btn-padding-y: 0.5rem;
+  border: 3px solid black;
+
 }

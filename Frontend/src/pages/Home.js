@@ -20,8 +20,8 @@ const Home = () => {
         </Row>
         <Row> 
             <Col className="button-container">
-            <Button className="me-4 btn" onClick={()=>{nav('/Stage')}}>단계별</Button>
-            <Button className="me-4 btn user" onClick={()=>{nav('/Board')}}>유저별</Button>
+            <Button className="me-4 abtn" onClick={()=>{nav('/Stage')}}>단계별</Button>
+            <Button className="me-4 abtn user" onClick={()=>{nav('/Board')}}>유저별</Button>
             </Col>
         </Row>
     
