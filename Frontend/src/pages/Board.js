@@ -62,6 +62,7 @@ function Board() {
           </Col>
         </Row>
         <Camodal
+        className=""
         show={showModal}
         handleClose={handleCloseModal}
 

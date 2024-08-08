@@ -1,0 +1,42 @@
+.ca-header {
+    background-color: #FBE736;
+}
+
+.headertx{
+    flex: 1;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.ca-body{
+    align-content: center;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.ca-input {
+    border-radius: 25px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ca-button {
+    width: 100px;
+    background-color: #FBE736;
+    color: black;
+    margin: 10px 30px 10px 30px;
+    border-radius: 25px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ca-button:hover {
+    background-color: #dcc709;
+}
+
+.ca-button:active {
+    background-color: #938506 !important;
+}
