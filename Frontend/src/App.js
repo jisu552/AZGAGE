@@ -22,7 +22,6 @@ function App() {
         <Route path="/Board" element={<Board/>}/>
         <Route path="/Register" element={<Register/>}/>
         <Route path="/Board/:board_idx" element={<BoardDetaile/>}/>
-
         <Route path="/Stage" element={<Stage/>}/>
       </Routes>
     </div>
