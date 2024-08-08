@@ -1,36 +1,36 @@
 .btn-primary{
-    --bs-btn-bg : white !important;
-    color: black;
-    --bs-btn-border-color: #343a40;
-    --bs-btn-padding-x: 2rem;
-    --bs-btn-padding-y: 0.5rem;
-    border: 3px solid black;
-    margin-right: 5rem !important;
-    --bs-btn-hover-bg: #fdb21d;
-    --bs-btn-hover-border-color: #fdb21d;
+  --bs-btn-bg : white !important;
+  color: black;
+  --bs-btn-border-color: #343a40;
+  --bs-btn-padding-x: 2rem;
+  --bs-btn-padding-y: 0.5rem;
+  border: 3px solid black;
+  margin-right: 5rem !important;
+  --bs-btn-hover-bg: #fdb21d;
+  --bs-btn-hover-border-color: #fdb21d;
 }
 .button-container {
-    display: flex;
-    justify-content: center; /* 버튼을 중앙으로 정렬 */
-    gap: 1rem; /* 버튼 간의 간격을 설정 */
-    margin-left: 40px
+  display: flex;
+  justify-content: center; /* 버튼을 중앙으로 정렬 */
+  gap: 1rem; /* 버튼 간의 간격을 설정 */
+  margin-left: 40px
 }
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .homeimg {
-    padding: 0;
-    margin: 0;
-    height: 50vh; /* 화면 전체 높이 */
-    display: flex;
-    
-  }
+  padding: 0;
+  margin: 0;
+  height: 50vh; /* 화면 전체 높이 */
+  display: flex;
   
-  .img-fluid {
-    max-width: 100%;
-    height: auto; /* 비율 유지하면서 화면에 맞게 조정 */
-  }
-  .user {
-    margin-left: 10px;
-  }
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto; /* 비율 유지하면서 화면에 맞게 조정 */
+}
+.user {
+  margin-left: 10px;
+}

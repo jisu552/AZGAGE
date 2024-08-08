@@ -17,6 +17,10 @@
     "react-router-dom": "^6.26.0",
     "react-scripts": "5.0.1",
     "react-table": "^7.8.0",
+<<<<<<< HEAD
+=======
+    "styled-components": "^6.1.12",
+>>>>>>> 2c35a209c6b5c218d8618f5ec224ea6455b5548a
     "sweetalert2": "^11.12.4",
     "web-vitals": "^2.1.4"
   },
