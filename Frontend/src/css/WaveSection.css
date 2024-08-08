@@ -1,0 +1,43 @@
+.hero-waves {
+  width: 100%;
+  height: auto;
+  overflow: hidden; /* 부모 컨테이너에서 오버플로우 숨기기 */
+}
+
+.Bsection2 {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.wave1, .wave2, .wave3 {
+  display: block;
+  position: absolute;
+  width: 200%; /* 애니메이션이 매끄럽게 반복되도록 넓게 설정 */
+  height: auto;
+  background-repeat: repeat-x; /* 수평으로 반복 */
+}
+
+.wave1 {
+  animation: wave-animation 10s infinite linear;
+}
+
+.wave2 {
+  animation: wave-animation 15s infinite linear;
+}
+
+.wave3 {
+  animation: wave-animation 20s infinite linear;
+}
+
+@keyframes wave-animation {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-50%); /* 요소의 절반 너비만큼 이동 */
+  }
+}
