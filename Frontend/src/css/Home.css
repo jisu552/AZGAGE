@@ -8,6 +8,8 @@
   margin-right: 5rem !important;
   --bs-btn-hover-bg: #fdb21d;
   --bs-btn-hover-border-color: #fdb21d;
+  --bs-btn-active-border-color: #fdb21d;
+  --bs-btn-active-bg: #fdb21d;
 }
 .button-container {
   display: flex;
