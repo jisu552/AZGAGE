@@ -4,7 +4,7 @@ import '../css/WaveSection.css'; // CSS 파일을 가져오는 예시
 const WaveSection = () => (
   <svg
     className="hero-waves Bsection2"
-    viewBox="0 24 150 28"
+    viewBox="0 24 150 45"
     preserveAspectRatio="none"
   >
     <defs>

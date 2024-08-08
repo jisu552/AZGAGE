@@ -27,11 +27,6 @@ const Home = () => {
     
     </Container>
     <Container fluid className="position-relative">
-        <Row>
-          <Col className='homeimg'>
-            {/* <Image src='./image/homeimg.png' alt='Home' className='img-fluid' /> */}
-          </Col>
-        </Row>
         <WaveSection /> {/* SVG 컴포넌트를 여기에 추가 */}
       </Container>
       

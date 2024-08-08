@@ -33,13 +33,6 @@
   margin-bottom: 1rem; /* Provide space between form elements */
 }
 
-/* Button customization */
-.btn-success {
-  background-color:yellow !important;
-  color: black !important;
-  border: none !important;
- 
-}
 
 .btn-success:active {
   background-color: black;
@@ -47,17 +40,9 @@
  
 }
 
-.btn-success:hover {
-  background-color: black;
-  /* border-color: black; */
- 
-}
 
-.btn-warning {
-  background-color: #FEE500; /* 카카오 색상 */
-  color: #391B1B; /* 텍스트 색상 */
-  /* 필요한 경우 여기에 더 많은 스타일링을 추가하세요. */
-}
+
+
 
 /* Link customization */
 .login-link {
@@ -97,23 +82,6 @@
   border-radius: 0 0.25rem 0.25rem 0; /* 오른쪽 상단과 하단에만 둥근 모서리 적용 */
 }
 
-/* 버튼과 링크의 너비도 조절할 수 있습니다. */
-.login-button,
-.kakao-login-button,
-.login-link {
-  width: calc(100% - 30px); /* 아이콘의 너비를 고려하여 조정 */
-  display: block; /* 블록 레벨 요소로 만들어 가운데 정렬을 가능하게 합니다. */
-  margin: 10px auto; /* 위, 아래 마진으로 여백을 주고 좌우 자동 마진으로 가운데 정렬 */
-}
-
-.kakao-login-button{
-  width: 75%;
-}
-
-.login-button{
-  width: 75%;
-}
-
 
 .nlink{
   color: black;
@@ -123,18 +91,21 @@
   color: black;
 }
 
-/* Login.css */
-.another-login-button {
-  /* padding-left: 200px !important;  */
-  border: 0.5px solid #fdfcfc; /*테두리*/
-  background-color: transparent; /* 투명 배경 */
-  color: #000; /* 검정색 텍스트 */
-  padding: 0.2rem 0.1rem; /* 패딩 줄임 */
-  font-size: 0.8rem; /* 글자 크기 줄임 */
-  width: fit-content !important;
+
+.login-button{
+  --bs-btn-hover-bg: #fdb21d;
+  --bs-btn-hover-border-color: #fdb21d;
+  --bs-btn-active-border-color: #fdb21d;
+  --bs-btn-active-bg: #fdb21d;
+  --bs-btn-active-color: white;
+  --bs-btn-bg : #FFF73D;
+  --bs-btn-hover-color : white;
+  border-radius: 20px;
+  color: black;
+  --bs-btn-border-color: #343a40;
+  --bs-btn-padding-x: 2rem;
+  --bs-btn-padding-y: 0.5rem;
+  border: 3px solid black;
+
 }
 
-/* 인풋 그룹 내부의 아이콘을 인풋 필드와 동일한 높이와 중앙 정렬로 맞춥니다. */
-
-
-/* FontAwesome 아이콘에 대한 추가적인 스타일 조정 */
