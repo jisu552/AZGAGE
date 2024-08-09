@@ -19,6 +19,7 @@
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'CookieRun-Regular';
 }
 
 .login-logo {
@@ -76,6 +77,7 @@
   border-right: none; /* 오른쪽 테두리 제거 */
   background-color: #e9ecef;
   border-radius: 0.25rem 0 0 0.25rem;
+  
 }
 /* 입력 필드 오른쪽 둥근 모서리 */
 .form-control {
@@ -106,6 +108,7 @@
   --bs-btn-padding-x: 2rem;
   --bs-btn-padding-y: 0.5rem;
   border: 3px solid black;
+  font-family: 'CookieRun-Regular';
 
 }
 

@@ -27,7 +27,7 @@ function Board() {
     <Container>
         <Row className="my-3"> 
             <Col className="jusify-content-left">
-                <h3>게시판</h3>
+                <h3 className="title">게시판</h3>
             </Col>
         </Row>
         <Row className="my-5">

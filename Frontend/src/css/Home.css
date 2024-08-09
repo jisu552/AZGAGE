@@ -50,6 +50,7 @@
   --bs-btn-padding-y: 0.5rem;
   border: 3px solid black;
   margin-right: 5rem ;
+  font-family: 'CookieRun-Regular';
 
 }
 
@@ -64,5 +65,6 @@
   --bs-btn-padding-x: 2rem;
   --bs-btn-padding-y: 0.5rem;
   border: 3px solid black;
+  font-family: 'CookieRun-Regular';
 
 }
