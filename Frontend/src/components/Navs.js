@@ -20,7 +20,7 @@ function Navs() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto justify-content-center">
             <Nav.Link href="/">홈</Nav.Link>
-            <Nav.Link href="/Category">단계별문제</Nav.Link>
+            <Nav.Link href="/Stage">단계별문제</Nav.Link>
             <Nav.Link href="/Board">유저문제</Nav.Link>
           </Nav>
           <Nav className="align-items-center">
