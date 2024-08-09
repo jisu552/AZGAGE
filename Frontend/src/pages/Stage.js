@@ -5,18 +5,17 @@ import styled from 'styled-components';
 
 // 스타일드 컴포넌트
 const Node = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => (props.active ? 'yellow' : 'lightgray')};
+  background-color: ${(props) => (props.active ? 'rgb(246, 235, 121)' : 'lightgray')};
   color: black;
   position: absolute;
-  left: ${(props) => `calc(${props.x * 100}% - 25px)`};
-  top: ${(props) => `calc(${props.y * 100}% - 25px)`};
-  font-family: 'CookieRun-Regular';
+  left: ${(props) => `calc(${props.x * 100}% - 60px)`};
+  top: ${(props) => `calc(${props.y * 100}% - 60px)`};
 `;
 
 const Line = styled.line`
@@ -84,8 +83,8 @@ const Stage = () => {
   };
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
-      <h1 className='title'>난이도별 아재개그</h1>
+    <div style={{ position: 'relative', width: '100%', height: '90vh' }}>
+      <h1>난이도별 아재개그</h1>
       <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0 }}>
         {edges.map((edge, index) => {
           const fromNode = nodes.find((node) => node.id === edge.from);
