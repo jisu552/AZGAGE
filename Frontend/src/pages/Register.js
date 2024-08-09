@@ -52,6 +52,9 @@ const Register = () => {
         if (name === "userName"){
           setUserNickName(value);
         } 
+        if (name === "username"){
+          setUsername(value);
+        }
     };
     function isPasswordMatching(password, confirmPassword){
       return password == confirmPassword
@@ -138,13 +141,15 @@ const Register = () => {
     }
 
     try {
-      await axios.post("/register", userData, {
+        await axios.post("/register", userData, {
         headers: {
           "Content-Type": "application/json",
         },
       });
+      // 이 이후 실행이 안됨 log 안 찍힘
       console.log("회원가입 성공");
-      navigate("/Login");
+      navigate("/login");
+      
     } catch (error) {
       console.error("회원가입 실패:", error);
       Swal.fire({
@@ -215,9 +220,10 @@ const Register = () => {
             <Form.Control
               type="text"
               placeholder="이름"
+              name="username"
               className="input-field"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={handleInputChange}
             />
           </InputGroup>
 

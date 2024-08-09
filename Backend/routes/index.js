@@ -30,11 +30,22 @@ router.get('/checkId/:userId', (request, response) => {
     })
 })
 router.post('/register', (req, res)=>{
-    const userdata = req.data;
-    // let sql = `INSERT INTO`
-    // conn.query(sql,[
+    console.log(req.body);
+    const {
+        user_id,
+        nickname,
+        user_name,
+        pw,
+        user_phone
+    } = req.body;
 
-    // ],(err,result))
+    let sql = `INSERT INTO user(user_id, nickname, user_name, pw, user_phone) VALUES(?,?,?,?,?)`;
+    conn.query(sql,[req['user_id']    ],(err,result))
+    try{
+        res.status(200).json({message : "회원가입 성공"});
+    } catch(error) {
+        res.status(500).json({error : "회원가입 실패"});
+    }
 });
 // DB관련
 
