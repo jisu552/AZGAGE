@@ -16,6 +16,7 @@ const Node = styled.div`
   position: absolute;
   left: ${(props) => `calc(${props.x * 100}% - 60px)`};
   top: ${(props) => `calc(${props.y * 100}% - 60px)`};
+  font-family: 'CookieRun-Regular';
 `;
 
 const Line = styled.line`
@@ -84,7 +85,7 @@ const Stage = () => {
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '90vh' }}>
-      <h1>난이도별 아재개그</h1>
+      <h1 className='title'>난이도별 아재개그</h1>
       <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0 }}>
         {edges.map((edge, index) => {
           const fromNode = nodes.find((node) => node.id === edge.from);
