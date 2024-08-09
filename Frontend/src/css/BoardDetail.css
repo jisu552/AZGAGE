@@ -1,0 +1,165 @@
+/* 기본 스타일 */
+.bcontainer {
+    width: 80%;
+    border: 1px solid #000;
+    margin: auto;
+}
+
+.header-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(246, 235, 121);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    font-size: 100%;
+    text-align: center;
+}
+
+.header-col {
+    padding: 10px;
+    font-family: 'CookieRun-Regular';
+    font-weight: bold;
+    
+}
+
+.header-col.title {
+    border-right: 1px solid #000;
+}
+
+.header-col.author {
+    border-left: 1px solid #000;
+}
+
+.content {
+    padding: 50px 20px;
+    background-color: #fff;
+    text-align: center;
+    margin-top: 1%;
+    font-family: 'CookieRun-Regular';
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hint-row {
+    padding-top: 10px;
+}
+
+.highlight {
+    color: orange;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 0;
+    flex-wrap: wrap;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000;
+    padding: 10px;
+    background-color: rgb(246, 235, 121);
+    width: 45%;
+    max-width: 600px;
+    /* margin: 10px auto; */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    margin-left: 15%;
+}
+
+.answer {
+    margin-right: 5%;
+    border-right: 1px solid #000;
+    padding-right: 10px;
+    font-family: 'CookieRun-Regular';
+}
+
+.arrow-btn {
+    margin-left: 5px;
+    width: 40px;
+    text-align: center;
+    padding: 0;
+    border: 1px solid #000;
+    background-color: rgb(246, 235, 121);
+    color: #000;
+    font-family: 'CookieRun-Regular';
+    height: 50px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.arrow-btn:hover {
+    background-color: #fdb21d;
+    color: #000;
+}
+
+.colx {
+    margin-top: 10px;
+    text-align: center;
+    flex: 1;
+}
+
+/* 반응형 미디어 쿼리 */
+@media (max-width: 768px) {
+    .header-row {
+        font-size: 90%;
+    }
+
+    .content {
+        padding: 20px 10px;
+    }
+
+    .input-container {
+        max-width: none;
+        margin-right: 15%;
+
+    }
+
+    .answer{
+        padding-right: 2px;
+     
+    }
+
+    .answer h3{
+        font-size: 20px;
+        padding-top: 6px;
+        padding-right: 6px;
+
+    }
+
+    .arrow-btn {
+        width: 35px;
+        height: 45px;
+    }
+
+    .footer-row {
+        flex-direction: column;
+    }
+
+    .colx {
+        margin-top: 15px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-row {
+        font-size: 80%;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .arrow-btn {
+        width: 30px;
+        height: 40px;
+    }
+
+    .input-container {
+        padding: 5px;
+    }
+}

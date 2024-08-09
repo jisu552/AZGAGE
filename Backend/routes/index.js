@@ -21,7 +21,7 @@ router.get('/', (req, res)=>{
 router.get('/checkId/:userId', (request, response) => {
     const userId = request.params.userId;
     let sql = "SELECT COUNT(*) AS count FROM user WHERE user_id = ?";
-    conn.query(sql, [userId], (err, res) => {
+    conn.query(sql, userId, (err, res) => {
         if (err) {
             return res.status(500).json({error : err.message});
         }
@@ -29,24 +29,36 @@ router.get('/checkId/:userId', (request, response) => {
         response.json(count > 0);
     })
 })
-router.post('/register', (req, res)=>{
-    console.log(req.body);
-    const {
-        user_id,
-        nickname,
-        user_name,
-        pw,
-        user_phone
-    } = req.body;
 
-    let sql = `INSERT INTO user(user_id, nickname, user_name, pw, user_phone) VALUES(?,?,?,?,?)`;
-    conn.query(sql,[req['user_id']    ],(err,result))
-    try{
-        res.status(200).json({message : "회원가입 성공"});
-    } catch(error) {
-        res.status(500).json({error : "회원가입 실패"});
+router.post('/register', async (req, res) => {
+    try {
+        console.log(req.body);
+        const {
+            user_id,
+            nickname,
+            user_name,
+            pw,
+            user_phone
+        } = req.body;
+
+        // 비밀번호 해싱
+        // const hashedPassword = await bcrypt.hash(pw, 10);
+
+        let sql = "INSERT INTO user(user_id, nickname, user_name, pw, user_phone) VALUES(?,?,?,?,?)";
+        conn.query(sql, [user_id, nickname, user_name, pw, user_phone], (err, result) => {
+            if (err) {
+                console.error("Database Error:", err);
+                return res.status(500).json({ error: "회원가입 실패", details: err.message });
+            }
+
+            res.status(201).json({ message: "회원가입 성공" });
+        });
+    } catch (error) {
+        console.error("Server Error:", error);
+        res.status(500).json({ error: "서버 에러", details: error.message });
     }
 });
+
 // DB관련
 
 

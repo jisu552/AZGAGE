@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Board from './pages/Board';
 import Register from './pages/Register';
 import BoardDetail from './pages/BoardDetail';
+import BoardDetaile from './pages/BoardDetaile';
 import Stage from './pages/Stage';
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Board" element={<Board/>}/>
         <Route path="/Register" element={<Register/>}/>
         <Route path="/Board/:board_idx" element={<BoardDetail/>}/>
+        <Route path='/Stage/:que_idx' element={<BoardDetaile/>}/>
         <Route path="/Stage" element={<Stage/>}/>
       </Routes>
     </div>

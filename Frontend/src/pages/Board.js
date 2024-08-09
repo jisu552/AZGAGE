@@ -3,10 +3,14 @@ import Paginated from "../components/Paginated";
 import "../css/board.css"
 import Camodal from "../components/Camodal";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 
 function Board() {
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  
 
   function qdd(){
     setShowModal(true);
