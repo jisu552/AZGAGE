@@ -48,14 +48,14 @@
 
 .search-button {
   padding: 0.5rem 1rem;
-  background-color: black; /* 부트스트랩 기본 색상 */
-  color: white;
+  background-color: rgb(246, 235, 121); /* 부트스트랩 기본 색상 */
+  color: black;
   border: none;
   cursor: pointer;
 }
 
 .search-button:hover {
-  background-color: black; /* 버튼 호버 시 색상 변경 */
+  background-color: rgb(246, 235, 121);/* 버튼 호버 시 색상 변경 */
 }
 
 /* "글쓰기" 버튼 스타일링 */
@@ -93,21 +93,23 @@
 /* 페이지네이션 활성 버튼 스타일 */
 .pagination-container .btn-group .btn.active {
   background-color: white; /* 활성 버튼 색상 */
-  color: black;
+  color: rgb(246, 235, 121);
 }
 
 /* 페이지네이션 버튼 기본 스타일 */
 .pagination-container .btn-group .btn {
-  color: white; /* 기본 버튼 텍스트 색상 */
-  background-color: black; /* 배경 투명 */
+  color: black; /* 기본 버튼 텍스트 색상 */
+  background-color:rgb(246, 235, 121); /* 배경 투명 */
+  border : white
  
 }
 
 /* 페이지네이션 버튼 호버 스타일 */
 .pagination-container .btn-group .btn:hover {
-  background-color:black; /* 호버 시 배경 색상 */
+  background-color:#fdb21d; /* 호버 시 배경 색상 */
   color: white; /* 호버 시 텍스트 색상 */
 }
+
 
 /* 반응형 디자인을 위해 "글쓰기" 버튼 스타일 재조정 */
 @media (max-width: 768px) {
