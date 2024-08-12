@@ -22,25 +22,20 @@ function Board() {
   const handleCloseModal = () => {
     setShowModal(false); 
   };
-    let boards=[
-        {index : 1,board_seq:1,id:1,board_title:1,region:1},
-        {index : 1,board_seq:1,id:1,board_title:1,region:1},
-        {index : 1,board_seq:1,id:1,board_title:'제목',region:1},
-
-    ]
 
     useEffect(()=>{
       axios.post('/question/search')
       .then(response => {
         console.log('문제가 보입니다!!', response.data.board);
         setBoard(response.data.board)
+        
       })
       .catch(error => {
         console.error('문제 보이기 실패:', error);
         alert('문제 보이기 중 오류가 발생했습니다.');
       });
-    },[])
-    console.log(board,"dsfsd");
+    },[showModal])
+    
     
   return (
     <Container>
