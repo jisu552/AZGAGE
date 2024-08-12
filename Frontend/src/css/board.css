@@ -24,8 +24,8 @@
 
 /* 헤더 스타일링 */
 .header1 {
-  background-color: rgb(201, 231, 69); /* 부트스트랩 기본 색상 */
-  color: white;
+  background-color: rgb(246, 235, 121);/* 부트스트랩 기본 색상 */
+  color: black;
 }
 
 /* 버튼 스타일링 */
