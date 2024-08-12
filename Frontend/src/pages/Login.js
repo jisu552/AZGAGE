@@ -62,7 +62,7 @@ function Login() {
                 </InputGroup>
 
                 <Button
-                  variant="success"
+                  
                   type="submit"
                   className="login-button mb-3"
                 >

@@ -11,6 +11,7 @@ const Camodal = ({ show, handleClose }) => {
         <Modal.Title className='headertx'>문제 출제</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+
         제목 입력
         <Form.Control
           type='text'

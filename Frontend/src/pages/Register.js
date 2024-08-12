@@ -2,9 +2,10 @@
 import { faLock, faUnlockKeyhole, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useCallback, useState } from "react";
-import { Button, Col, Container, Form, InputGroup, Nav, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, InputGroup, Row } from "react-bootstrap";
 import Swal from "sweetalert2";
 import axios from "../Axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
     const [username, setUsername] = useState("");
@@ -15,6 +16,7 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [passwordCheck, setPasswordCheck] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
+    const navigate = useNavigate();
 
 
 
@@ -50,12 +52,35 @@ const Register = () => {
         if (name === "userName"){
           setUserNickName(value);
         } 
+        if (name === "username"){
+          setUsername(value);
+        }
     };
+    function isPasswordMatching(password, confirmPassword){
+      return password == confirmPassword
+  }
+  
+  function validatedId(id) {
+    const re = /^[A-Za-z0-9]{8,}$/;
 
+    return re.test(id);
+  }
+  
+  const handleBlur = (e) => {
+    const {name, value} = e.target;
+    if (name === "userId" && value.length < 8){
+        Swal.fire({
+            icon : "warning",
+            text : "아이디 8글자 이상",
+            confirmButtonText : "컨펌",
+        });
+        setIsIdValid(false);
+    }
+  };
     const handleSubmit = async (e) => {
       e.preventDefault();
 
-      if(!isIdValid) {
+      if (!isIdValid) {
         Swal.fire({
           icon: 'error',
           text: '아이디 중복 확인을 해주세요.',
@@ -63,32 +88,80 @@ const Register = () => {
         });
         return;
       }
-      if(password !== passwordCheck){
+      if (password !== passwordCheck) {
         Swal.fire({
-          
-        })
+          icon: 'error',
+          text: '비밀번호가 일치하지 않습니다..',
+          confirmButtonText: '확인'
+        });
+        return;
       }
-    }
-    function isPasswordMatching(password, confirmPassword){
-        return password == confirmPassword
-    }
-    const handleBlur = (e) => {
-        const {name, value} = e.target;
-        if (name === "userId" && value.length < 8){
-            Swal.fire({
-                icon : "warning",
-                text : "아이디 8글자 이상",
-                confirmButtonText : "컨펌",
-            });
-            setIsIdValid(false);
-        }
-    };
+  
+      if (!password.trim() ) {
+        Swal.fire({
+          icon: 'error',
+          text: '비밀번호를 입력해주세요',
+          confirmButtonText: '확인'
+        });
+        return;
+      }
+  
+      if (!passwordCheck.trim() ) {
+        Swal.fire({
+          icon: 'error',
+          text: '비밀번호 확인을 입력해주세요',
+          confirmButtonText: '확인'
+        });
+        return;
+      }
+      if (!phoneNumber.trim()) {
+        Swal.fire({
+          icon: 'error',
+          text: '전화번호를 입력해주세요.',
+          confirmButtonText: '확인'
+        });
+        return;
+      }
+  
+      if (!userNickName.trim()) {
+        Swal.fire({
+          icon: 'error',
+          text: '닉네임을 입력해주세요.',
+          confirmButtonText: '확인'
+        });
+        return;
+      }
+    const userData = {
+      user_id : userId,
+      nickname : userNickName,
+      user_name : username,
+      pw : password,
+      user_phone : phoneNumber,
 
-    function validatedId(id) {
-        const re = /^[A-Za-z0-9]{8,}$/;
-
-        return re.test(id);
     }
+
+    try {
+        await axios.post("/register", userData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      // 이 이후 실행이 안됨 log 안 찍힘
+      console.log("회원가입 성공");
+      navigate("/login");
+      
+    } catch (error) {
+      console.error("회원가입 실패:", error);
+      Swal.fire({
+        icon: 'error',
+        text: '회원가입에 실패하였습니다.',
+        confirmButtonText: '확인'
+      });
+    }
+  };
+
+
+
     function formatPhoneNumber(Number){
         const cleaned = Number.replace(/\D/g, "");
         if (cleaned.length < 4) return cleaned;
@@ -147,9 +220,10 @@ const Register = () => {
             <Form.Control
               type="text"
               placeholder="이름"
+              name="username"
               className="input-field"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={handleInputChange}
             />
           </InputGroup>
 

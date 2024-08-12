@@ -1,3 +1,5 @@
+
+
 /* 로고 이미지 스타일 */
 .navbar-brand img {
     width: 45px; /* 로고의 너비 */
@@ -10,6 +12,7 @@
     padding-bottom: 0.5rem; /* 링크 하단의 패딩 */
     color: black !important;
     overflow: hidden; /* 글자를 넘어가는 부분 숨기기 */
+    font-family: 'CookieRun-Regular';
 }
 
 .custom-navbar {

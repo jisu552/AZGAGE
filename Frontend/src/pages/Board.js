@@ -3,10 +3,14 @@ import Paginated from "../components/Paginated";
 import "../css/board.css"
 import Camodal from "../components/Camodal";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 
 function Board() {
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  
 
   function qdd(){
     setShowModal(true);
@@ -27,7 +31,7 @@ function Board() {
     <Container>
         <Row className="my-3"> 
             <Col className="jusify-content-left">
-                <h3>게시판</h3>
+                <h3 className="title">게시판</h3>
             </Col>
         </Row>
         <Row className="my-5">
@@ -58,7 +62,7 @@ function Board() {
         </Row>
         <Row>
           <Col>
-            <Button onClick={qdd}>출제하기</Button>
+            <Button className='abtnb' onClick={qdd}>출제하기</Button>
           </Col>
         </Row>
         <Camodal
