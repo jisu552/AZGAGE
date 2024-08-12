@@ -38,4 +38,19 @@ router.post('/insert', (request, response) => {
     
 })
 
+router.post('/search', (request, response) => {
+    let sql = "SELECT * FROM question_board"
+    conn.query(sql,(err,rows)=>{
+        if(err){
+            console.error("유저 문제게시판 찾기 쿼리 오류:",err);
+            return response.status(500).json({
+                error:'서버오류'
+            }) 
+        }if(rows.length>0){
+            response.json({board:rows})
+        }else{
+            response.status(404).json({error:'데이터가 없습니다'})
+        }
+    })
+})
 module.exports = router;
