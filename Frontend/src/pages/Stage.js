@@ -1,7 +1,11 @@
-import React from 'react'
-import { useState } from 'react'
-
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
+// 사용자 정보
+const user = {
+  id: 'han',
+  chapter: 3,
+};
 
 // 스타일드 컴포넌트
 const Node = styled.div`
@@ -16,6 +20,8 @@ const Node = styled.div`
   position: absolute;
   left: ${(props) => `calc(${props.x * 100}% - 60px)`};
   top: ${(props) => `calc(${props.y * 100}% - 60px)`};
+  cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  pointer-events: ${(props) => (props.disabled ? 'none' : 'auto')};
   font-family: 'CookieRun-Regular';
 `;
 
@@ -24,22 +30,7 @@ const Line = styled.line`
   stroke-width: 2;
 `;
 
-// 원의 위치
-// 고정 위치
-// const nodes = [
-//   { id: 1, x: 50, y: 100 },
-//   { id: 2, x: 150, y: 100 },
-//   { id: 3, x: 250, y: 100 },
-//   { id: 4, x: 350, y: 100 },
-//   { id: 5, x: 250, y: 200 },
-//   { id: 6, x: 150, y: 200 },
-//   { id: 7, x: 50, y: 200 },
-//   { id: 8, x: 50, y: 300 },
-//   { id: 9, x: 150, y: 300 },
-//   { id: 10, x: 250, y: 300 },
-// ];
-
-// 반응형 도전! -> 성공!
+// 노드 위치 (반응형)
 const nodes = [
   { id: 1, x: 0.2, y: 0.25 },
   { id: 2, x: 0.4, y: 0.26 },
@@ -53,7 +44,7 @@ const nodes = [
   { id: 10, x: 0.75, y: 0.75 },
 ];
 
-// 원 연결 위치
+// 노드 연결 (간선)
 const edges = [
   { from: 1, to: 2 },
   { from: 2, to: 3 },
@@ -70,22 +61,25 @@ const Stage = () => {
   const [activeNodes, setActiveNodes] = useState([1]);
 
   const toggleNode = (id) => {
-    setActiveNodes((prevActiveNodes) => {
-      if (prevActiveNodes.includes(id)) {
-        return prevActiveNodes.filter((nodeId) => nodeId !== id);
-      } else {
-        return [...prevActiveNodes, id];
-      }
-    });
+    if (id <= user.chapter) {
+      setActiveNodes((prevActiveNodes) => {
+        if (prevActiveNodes.includes(id)) {
+          return prevActiveNodes.filter((nodeId) => nodeId !== id);
+        } else {
+          return [...prevActiveNodes, id];
+        }
+      });
+    }
   };
 
   const isEdgeActive = (from, to) => {
+    // 두 노드가 모두 활성화되었는지 확인
     return activeNodes.includes(from) && activeNodes.includes(to);
   };
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '90vh' }}>
-      <h1 className='title'>난이도별 아재개그</h1>
+      <h1>난이도별 아재개그</h1>
       <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0 }}>
         {edges.map((edge, index) => {
           const fromNode = nodes.find((node) => node.id === edge.from);
@@ -107,7 +101,8 @@ const Stage = () => {
           key={node.id}
           x={node.x}
           y={node.y}
-          active={activeNodes.includes(node.id)}
+          active={node.id <= user.chapter}
+          disabled={node.id > user.chapter}
           onClick={() => toggleNode(node.id)}
         >
           {node.id}
@@ -117,4 +112,4 @@ const Stage = () => {
   );
 };
 
-export default Stage
+export default Stage;
