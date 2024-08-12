@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const conn = require('../config/database')
+const md5 = require('md5');
 
 // 4-3. 메인페이지 경로 설정
 //      => server.js 추가 작업
@@ -58,6 +59,21 @@ router.post('/register', async (req, res) => {
         res.status(500).json({ error: "서버 에러", details: error.message });
     }
 });
+
+router.post('/SignIn', (req, res)=>{
+    const {userId, userPw} = req.body;
+    const hashPw = md5(userPw);
+    const sql = `SELECT user_id, nickname FROM user WHERE user_id=? AND pw=?`;
+    conn.query(sql, [userId, userPw], (err, rows)=>{
+        if(rows.length>0){
+            req.session.user = { id: rows[0].user_id,nickname: rows[0].nickname };
+            res.json({ success : true, nickname: rows[0].nickname  });
+        } else {
+            res.json({ success : false });
+        }
+    })
+})
+
 
 // DB관련
 

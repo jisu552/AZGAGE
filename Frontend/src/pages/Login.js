@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useCallback, useState } from "react";
 import { Button, Col, Container, Form, InputGroup, Nav, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import axios from "../Axios"
 
 
 import "../css/Login.css"; // CSS 파일의 실제 경로로 확인하세요.
@@ -10,14 +11,39 @@ import "../css/Login.css"; // CSS 파일의 실제 경로로 확인하세요.
 
 function Login() {
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [userId, setUserId] = useState("");
+  const [userPW, setUserPw] = useState("");
+  const [error, setError] = useState('');
+
+  
 
   let nav = useNavigate()
 
   function resg(){
     nav('/Register')
   }  
+
+  const submit = async(e)=>{
+    e.preventDefault();
+    try {
+      const response = await axios.post('/SignIn', { userId: userId, userPw: userPW });
+      
+      if (response.data.success) {
+        // 로그인 성공 시
+        // sessionStorage 또는 localStorage를 이용해 사용자 정보 저장
+        sessionStorage.setItem('userId', userId);
+        sessionStorage.setItem('nickname', response.data.nickname);
+
+
+        window.location.href='/'
+      } else {
+        setError('아이디 또는 비밀번호가 잘못되었습니다.');
+      }
+    } catch (error) {
+      console.error('로그인 중 오류 발생', error);
+      setError('서버에 문제가 발생했습니다. 나중에 다시 시도하세요.');
+    }
+  }
 
 
   return (
@@ -34,7 +60,7 @@ function Login() {
                 />
               </div>
 
-              <Form>
+              <Form onSubmit={submit}>
                 <InputGroup className="mb-3 w-75">
                   <InputGroup.Text>
                     <FontAwesomeIcon icon={faUser} />
@@ -43,8 +69,8 @@ function Login() {
                     type="text"
                     placeholder="아이디"
                     className="input-field"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={userId}
+                    onChange={(e) => setUserId(e.target.value)}
                   />
                 </InputGroup>
 
@@ -56,8 +82,8 @@ function Login() {
                     type="password"
                     placeholder="비밀번호"
                     className="input-field"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={userPW}
+                    onChange={(e) => setUserPw(e.target.value)}
                   />
                 </InputGroup>
 
@@ -65,6 +91,7 @@ function Login() {
                   
                   type="submit"
                   className="login-button mb-3"
+                  
                 >
                   로그인
                 </Button>
