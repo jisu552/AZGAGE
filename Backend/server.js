@@ -2,7 +2,8 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const indexRouter = require('./routes');
+const indexRouter = require('./routes/index');
+const questionRouter = require('./routes/question');
 const cors = require('cors')
 const session = require("express-session");
 const fileStore = require("session-file-store")(session);
@@ -30,6 +31,8 @@ app.use(
 
 // 4-3. 메인페이지 경로 설정
 app.use('/', indexRouter);
+app.use('/question', questionRouter);
+
 
 
 // 3-2. 포트 설정
