@@ -5,9 +5,11 @@
 }
 
 .custom-table {
-  width: 100%;
+  width: 60%;
   margin-bottom: 1rem;
   border-collapse: collapse;
+  position: relative;
+  left: 18%;
 }
 
 .custom-table th, .custom-table td {
@@ -16,6 +18,10 @@
   text-align: left;
   border: none;
   text-align: center;
+}
+
+.all{
+  align-items: center;
 }
 
 .custom-table th {
@@ -142,6 +148,10 @@
 
   .header1 {
     font-size: 14px; /* 모바일에서 폰트 크기 조정 */
+  }
+  .custom-table{
+    width: 100%;
+    left: 1%;
   }
 }
 

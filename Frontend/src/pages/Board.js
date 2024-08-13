@@ -58,7 +58,7 @@ function Board() {
             {
               accessor: "board_title",
               Header: "문제",
-              width: "70%",
+              width: "40%",
             },
             { accessor: "id", Header: "작성자" },
             // { accessor: "region", Header: "조회" },
