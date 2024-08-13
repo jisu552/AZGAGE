@@ -29,6 +29,7 @@ function Navs() {
     sessionStorage.removeItem("nickname");
     // setUser(null); // 상태를 null로 업데이트
     setIsLogin(false)
+    window.location.reload()
 
   };
 
