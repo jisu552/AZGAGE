@@ -2,14 +2,16 @@ import { Container,Row,Col, Button } from "react-bootstrap";
 import Paginated from "../components/Paginated";
 import "../css/board.css"
 import Camodal from "../components/Camodal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "../Axios"
 
 
 
 function Board() {
   const [showModal, setShowModal] = useState(false);
-  const navigate = useNavigate();
+  const [board, setBoard] = useState([])
+  const nav = useNavigate();
   
 
   function qdd(){
@@ -20,41 +22,46 @@ function Board() {
   const handleCloseModal = () => {
     setShowModal(false); 
   };
-    let boards=[
-        {index : 1,board_seq:1,id:1,board_title:1,region:1},
-        {index : 1,board_seq:1,id:1,board_title:1,region:1},
-        {index : 1,board_seq:1,id:1,board_title:'제목',region:1},
 
-    ]
-
+    useEffect(()=>{
+      axios.post('/question/search')
+      .then(response => {
+        console.log('문제가 보입니다!!', response.data.board);
+        setBoard(response.data.board)
+        
+      })
+      .catch(error => {
+        console.error('문제 보이기 실패:', error);
+        alert('문제 보이기 중 오류가 발생했습니다.');
+      });
+    },[showModal])
+    
+    
   return (
     <Container>
         <Row className="my-3"> 
             <Col className="jusify-content-left">
-                <h3 className="title">게시판</h3>
+                <h3 className="title">유저 문제</h3>
             </Col>
         </Row>
         <Row className="my-5">
             <Col>
                 <Paginated
-                      data={boards.map((board, index) => ({
+                      data={board.map((board, index) => ({
             index: index + 1,
-            board_seq: board.board_seq,
-            id: board.mem_id,
-            board_title: board.board_title,
-        
-            region: board.board_seq,
+            id: board.nickname,
+            board_title: board.title,
+            // region: board.board_seq,
           }))}
           columns={[
             { accessor: "index" },
-            { accessor: "board_seq" },
             {
               accessor: "board_title",
               Header: "문제",
-              width: "70%",
+              width: "40%",
             },
             { accessor: "id", Header: "작성자" },
-            { accessor: "region", Header: "조회" },
+            // { accessor: "region", Header: "조회" },
           ]}
           
                 />
