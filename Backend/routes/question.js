@@ -39,6 +39,7 @@ router.post('/insert', (request, response) => {
 })
 
 router.post('/search', (request, response) => {
+    
     let sql = "SELECT * FROM question_board"
     conn.query(sql,(err,rows)=>{
         if(err){
@@ -53,4 +54,34 @@ router.post('/search', (request, response) => {
         }
     })
 })
+
+
+
+router.get('/:board_idx', (req, res) => {
+    const  board_idx  = req.params.board_idx; 
+    console.log(req.params.board_idx);
+    console.log("상세페이지 라우터");
+   
+    
+    console.log(board_idx);
+    
+    const sql = 'SELECT * FROM question_board WHERE board_idx = ?';
+
+    conn.query(sql, [board_idx], (err, results) => {
+        if (err) {
+            console.error('데이터베이스 쿼리x 에러:', err);
+            return res.status(500).json({ error: '서버 오류' });
+        }
+        if (results.length === 0) {
+            console.log(results);
+            return res.status(404).json({ error: '게시판 항목을 찾을 수 없습니다.' });
+        }
+        res.json(results[0]); 
+    });
+});
+
+
+
+
+
 module.exports = router;

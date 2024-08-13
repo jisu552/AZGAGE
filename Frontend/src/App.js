@@ -21,9 +21,9 @@ function App() {
       <Routes> 
         <Route path="/" element={<Home/>}/>
         <Route path="/Login" element={<Login/>}/>
-        <Route path="/Board" element={<Board/>}/>
+        <Route path="/question" element={<Board/>}/>
         <Route path="/Register" element={<Register/>}/>
-        <Route path="/Board/:board_idx" element={<BoardDetail/>}/>
+        <Route path="/question/:board_idx" element={<BoardDetail/>}/>
         <Route path='/Stage/:que_idx' element={<BoardDetaile/>}/>
         <Route path="/Stage" element={<Stage/>}/>
         <Route path="/Mypage" element={<Mypage/>}/>

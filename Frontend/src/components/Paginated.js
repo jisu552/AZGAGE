@@ -7,6 +7,7 @@ import {
 import Search from "./Search";
 import "../css/board.css";
 import { Button, ButtonGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Paginated({ columns, data }) {
   const {

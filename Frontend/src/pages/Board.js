@@ -35,8 +35,11 @@ function Board() {
         alert('문제 보이기 중 오류가 발생했습니다.');
       });
     },[showModal])
-    
-    
+
+  const handlePostClick = (board_idx)=>{
+    console.log(board_idx);
+    nav(`/question/${board_idx}`)
+  }
   return (
     <Container>
         <Row className="my-3"> 
@@ -51,7 +54,7 @@ function Board() {
             index: index + 1,
             id: board.nickname,
             board_title: board.title,
-            // region: board.board_seq,
+            idx: board.board_idx,
           }))}
           columns={[
             { accessor: "index" },
@@ -59,6 +62,9 @@ function Board() {
               accessor: "board_title",
               Header: "문제",
               width: "40%",
+              Cell:({row}) => (
+              <span onClick={()=>handlePostClick(row.original.idx)}> {row.original.board_title} </span>
+              )
             },
             { accessor: "id", Header: "작성자" },
             // { accessor: "region", Header: "조회" },

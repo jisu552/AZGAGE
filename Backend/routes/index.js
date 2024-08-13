@@ -6,9 +6,9 @@ const md5 = require('md5');
 
 // 4-3. 메인페이지 경로 설정
 //      => server.js 추가 작업
-router.get('/', (req, res)=>{
-    console.log('main');
-})
+// router.get('/', (req, res)=>{
+//     console.log('main');
+// })
 
 // 4-3. 메인페이지 경로 설정
 //      => server.js 추가 작업
@@ -73,6 +73,29 @@ router.post('/SignIn', (req, res)=>{
         }
     })
 })
+
+// router.get('/Board/:board_idx', (req, res) => {
+//     const  board_idx  = req.params.board_idx; 
+//     console.log(req.params.board_idx);
+//     console.log("상세페이지 라우터");
+   
+    
+//     console.log(board_idx);
+    
+//     const sql = 'SELECT * FROM question_board WHERE board_idx = ?';
+
+//     conn.query(sql, [id], (err, results) => {
+//         if (err) {
+//             console.error('데이터베이스 쿼리x 에러:', err);
+//             return res.status(500).json({ error: '서버 오류' });
+//         }
+//         if (results.length === 0) {
+//             console.log(results);
+//             return res.status(404).json({ error: '게시판 항목을 찾을 수 없습니다.' });
+//         }
+//         res.json(results[0]); 
+//     });
+// });
 
 
 // DB관련
