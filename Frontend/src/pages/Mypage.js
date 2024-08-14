@@ -4,13 +4,15 @@ import axios from '../Axios'; // 이 경로가 올바른지 확인해야 합니�
 import "../css/Mypage.css";
 import { faGem } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
+
 
 const Mypage = () => {
   const [userData, setUserData] = useState(null); // 초기 상태를 null로 설정
   const [error, setError] = useState(null); // 초기 상태를 null로 설정
   let userId = window.sessionStorage.getItem("userId")
   console.log(userId);
-  
+  const nav = useNavigate()
 
   useEffect(() => {
     // axios를 사용하여 로그인된 사용자 데이터 가져오기
@@ -22,6 +24,7 @@ const Mypage = () => {
       .catch(error => {
         console.error('사용자 데이터 가져오기 실패:', error);
         setError(error.response ? error.response.data.error : "알 수 없는 오류가 발생했습니다.");
+        nav("/")
       });
   }, []); // 빈 배열을 두 번째 인자로 전달하여 컴포넌트가 마운트될 때만 실행되도록 함
 
@@ -32,6 +35,8 @@ const Mypage = () => {
   if (!userData) {
     return <div className="loading-message">로딩 중...</div>; // 데이터를 가져오는 동안 로딩 상태 표시
   }
+
+
 
   return (
     <Container>
