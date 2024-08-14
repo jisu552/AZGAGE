@@ -69,6 +69,8 @@
     /* margin: 10px auto; */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     margin-left: 15%;
+    font-family: 'CookieRun-Regular';
+    font-size: large;
 }
 
 .answer {
@@ -100,6 +102,20 @@
     margin-top: 10px;
     text-align: center;
     flex: 1;
+}
+
+.submitbtn{
+    background-color: #fdb21d;
+    border-color: #fdb21d; 
+    --bs-btn-active-bg :#fdb21d; 
+    --bs-btn-active-border-color :#fdb21d;
+    font-family: 'CookieRun-Regular';
+    font-size: large;
+}
+.submitbtn:hover{
+    background-color: #fdb21d;
+    border-color: #fdb21d; 
+    font-family: 'CookieRun-Regular';
 }
 
 /* 반응형 미디어 쿼리 */
