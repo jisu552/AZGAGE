@@ -95,6 +95,29 @@ router.post('/del/:board_idx',(req,res)=>{
         }
         res.json(results[0]); 
     });
+});
+
+router.get('/step/:que_idx', (req, res) => {
+    const  que_idx  = req.params.que_idx; 
+    console.log(req.params.que_idx);
+    console.log("상세페이지 라우터");
+   
+    
+    console.log(que_idx);
+    
+    const sql = 'SELECT * FROM step_board WHERE que_idx = ?';
+
+    conn.query(sql, [que_idx], (err, results) => {
+        if (err) {
+            console.error('데이터베이스 쿼리x 에러:', err);
+            return res.status(500).json({ error: '서버 오류' });
+        }
+        if (results.length === 0) {
+            console.log(results);
+            return res.status(404).json({ error: '게시판 항목을 찾을 수 없습니다.' });
+        }
+        res.json(results[0]); 
+    });
 })
 router.post('/update', (req,res)=>{
     const updatedData = req.body;
@@ -114,6 +137,8 @@ router.post('/update', (req,res)=>{
         res.json(results[0]); 
     });
 })
+
+
 
 
 module.exports = router;

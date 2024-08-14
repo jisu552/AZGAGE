@@ -74,6 +74,34 @@ router.post('/SignIn', (req, res)=>{
     })
 })
 
+router.post('/Mypage/:userId', (req, res) => {
+    // 로그인된 사용자의 ID를 세션에서 가져옵니다.
+    const user_id = req.params.userId
+
+    if (!user_id) {
+        return res.status(401).json({ error: "로그인이 필요합니다." });
+    }
+
+    const sql = 'SELECT * FROM user WHERE user_id = ?';
+
+    conn.query(sql, [user_id], (err, rows) => {
+        if (err) {
+            console.error("내 정보 조회 쿼리 오류:", err);
+            return res.status(500).json({ error: "내 정보 조회 실패", details: err.message });
+        }
+        if (rows.length > 0) {
+            res.status(200).json(rows[0]); // 사용자 정보 반환
+        } else {
+            res.status(404).json({ error: "사용자를 찾을 수 없습니다." });
+            
+        }
+    });
+});
+
+
+
+
+
 // router.get('/Board/:board_idx', (req, res) => {
 //     const  board_idx  = req.params.board_idx; 
 //     console.log(req.params.board_idx);
