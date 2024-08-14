@@ -165,8 +165,8 @@ const BoardDetail = () => {
           {currentUser === board.user_id && (
               <>
               <Container className='mt-3'>
-                <Button variant="danger" className="action-btn me-2" onClick={handleDelete}>삭제</Button>
-                <Button variant="warning" className="action-btn" onClick={handleUpdate}>수정</Button>
+                <Button variant="danger" className="action-btn me-2" onClick={handleDelete} style={{fontFamily:"CookieRun-Regular"}}>삭제</Button>
+                <Button variant="warning" className="action-btn" onClick={handleUpdate} style={{color:"white",fontFamily:"CookieRun-Regular"}}>수정</Button>
                 </Container>
               </>
             )}
