@@ -40,7 +40,7 @@ router.post('/insert', (request, response) => {
 
 router.post('/search', (request, response) => {
     
-    let sql = "SELECT * FROM question_board"
+    let sql = "SELECT * FROM question_board WHERE isdelete = 'N'"
     conn.query(sql,(err,rows)=>{
         if(err){
             console.error("유저 문제게시판 찾기 쿼리 오류:",err);
@@ -65,7 +65,7 @@ router.get('/:board_idx', (req, res) => {
     
     console.log(board_idx);
     
-    const sql = 'SELECT * FROM question_board WHERE board_idx = ?';
+    const sql = "SELECT * FROM question_board WHERE board_idx = ? and isdelete = 'N'";
 
     conn.query(sql, [board_idx], (err, results) => {
         if (err) {
@@ -80,8 +80,40 @@ router.get('/:board_idx', (req, res) => {
     });
 });
 
-
-
+router.post('/del/:board_idx',(req,res)=>{
+    const { board_idx } = req.params;
+    console.log(`sadfasdf, ${board_idx}`);
+    let sql = "UPDATE question_board SET isdelete = 'Y' WHERE board_idx = ?"
+    conn.query(sql, [board_idx], (err, results) => {
+        if (err) {
+            console.error('데이터베이스 쿼리x 에러:', err);
+            return res.status(500).json({ error: '서버 오류' });
+        }
+        if (results.length === 0) {
+            console.log(results);
+            return res.status(404).json({ error: '게시판 항목을 찾을 수 없습니다.' });
+        }
+        res.json(results[0]); 
+    });
+})
+router.post('/update', (req,res)=>{
+    const updatedData = req.body;
+    console.log('123123', updatedData);
+    console.log('123', updatedData.title);
+    
+    let sql = 'UPDATE question_board SET title = ?, question = ?, answer = ?, hint = ? WHERE board_idx = ?'
+    conn.query(sql, [updatedData.title, updatedData.question, updatedData.answer, updatedData.hint, updatedData.board_idx], (err, results) => {
+        if (err) {
+            console.error('데이터베이스 쿼리x 에러:', err);
+            return res.status(500).json({ error: '서버 오류' });
+        }
+        if (results.length === 0) {
+            console.log(results);
+            return res.status(404).json({ error: '에러' });
+        }
+        res.json(results[0]); 
+    });
+})
 
 
 module.exports = router;
