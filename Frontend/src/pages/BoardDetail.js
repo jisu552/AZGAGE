@@ -160,14 +160,6 @@ const BoardDetail = () => {
         });
       });
   }
-  function handleAlert(){
-    Swal.fire({
-      icon: 'error',
-      title: '게시물 수정 실패',
-      text: '게시물 수정 중 오류가 발생했습니다. 제목, 문제, 정답 중 하나라도 빈 문자열이 존재합니다.',
-      confirmButtonText: '확인'
-    });
-  }
   return (
     <>
           {currentUser === board.user_id && (
@@ -233,7 +225,6 @@ const BoardDetail = () => {
         onClose={handleCloseModal}
         onSave={handleModalSave}
         initialData={modalData}
-        onAlert={handleAlert}
       />
     </>
   );

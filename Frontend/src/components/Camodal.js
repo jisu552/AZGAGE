@@ -23,6 +23,12 @@ const Camodal = ({ show, handleClose }) => {
   
 
   const handleSave = () => {
+    // 공백 체크 로직
+    if (!title.trim() || !question.trim() || !answer.trim() || !hint.trim()) {
+      alert('모든 필드를 채워주세요.');
+      return;
+    }
+
     // Construct the newEvent object
     const newObj = {
       userId,
@@ -94,14 +100,6 @@ const Camodal = ({ show, handleClose }) => {
         <Button className="ca-button" onClick={handleClose}>취소</Button>
 
       </Modal.Body>
-      {/* <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          닫기
-        </Button>
-        <Button variant="primary">
-          저장
-        </Button>
-      </Modal.Footer> */}
     </Modal>
   );
 };
