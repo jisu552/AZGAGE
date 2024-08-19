@@ -164,8 +164,8 @@ const BoardDetail = () => {
     <>
           {currentUser === board.user_id && (
               <>
-              <Container className='mt-3'>
-                <div className='d-flex justify-content-end' style={{marginRight : '33px'}}>
+              <Container className='mt-5 bcontainer' style={{border:'None'}}>
+                <div className='d-flex justify-content-end'>
                 <Button variant="danger" className="action-btn me-2" onClick={handleDelete} style={{fontFamily:"CookieRun-Regular"}}>삭제</Button>
                 <Button variant="warning" className="action-btn" onClick={handleUpdate} style={{color:"white",fontFamily:"CookieRun-Regular"}}>수정</Button>
                 </div>
