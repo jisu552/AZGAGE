@@ -160,13 +160,23 @@ const BoardDetail = () => {
         });
       });
   }
+  function handleAlert(){
+    Swal.fire({
+      icon: 'error',
+      title: '게시물 수정 실패',
+      text: '게시물 수정 중 오류가 발생했습니다. 제목, 문제, 정답 중 하나라도 빈 문자열이 존재합니다.',
+      confirmButtonText: '확인'
+    });
+  }
   return (
     <>
           {currentUser === board.user_id && (
               <>
               <Container className='mt-3'>
+                <div className='d-flex justify-content-end' style={{marginRight : '33px'}}>
                 <Button variant="danger" className="action-btn me-2" onClick={handleDelete} style={{fontFamily:"CookieRun-Regular"}}>삭제</Button>
                 <Button variant="warning" className="action-btn" onClick={handleUpdate} style={{color:"white",fontFamily:"CookieRun-Regular"}}>수정</Button>
+                </div>
                 </Container>
               </>
             )}
@@ -223,6 +233,7 @@ const BoardDetail = () => {
         onClose={handleCloseModal}
         onSave={handleModalSave}
         initialData={modalData}
+        onAlert={handleAlert}
       />
     </>
   );
