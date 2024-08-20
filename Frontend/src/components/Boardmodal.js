@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, Modal } from "react-bootstrap";
 import "../css/camodal.css"
 import axios from "../Axios"
+import Swal from 'sweetalert2';
 
 
-const Boardmodal = ({ show, onClose, onSave, initialData }) => {
+const Boardmodal = ({ show, onClose, onSave, initialData}) => {
   const [title, setTitle] = useState('');
   const [question, setQuestion] = useState('');
   const [hint, setHint] = useState('');
@@ -21,7 +22,18 @@ const Boardmodal = ({ show, onClose, onSave, initialData }) => {
 
   const handleSave = () => {
     const updatedData = { title, question, hint, answer };
-    onSave(updatedData);
+    if (!title.trim() || !question.trim() || !answer.trim() || !hint.trim()) {
+      Swal.fire({
+        icon: 'error',
+        title: '게시물 수정 실패',
+        text: '게시물 수정 중 오류가 발생했습니다. 제목, 문제, 정답 중 하나라도 빈 문자열이 존재합니다.',
+        confirmButtonText: '확인'
+      });
+      return;
+    }
+    else{
+      onSave(updatedData);
+    }
   };
 
   return (

@@ -138,6 +138,22 @@ router.post('/update', (req,res)=>{
     });
 })
 
+router.post('/chapter', (request, response) => {
+    const { userId } = request.body;
+
+    let sql = "SELECT my_chapter FROM user WHERE user_id = ?";
+    conn.query(sql, [userId], (err, results) => {
+        if (err) {
+            console.error('데이터베이스 쿼리 오류:', err);
+            return response.status(500).json({ error: '서버 오류' });
+        }
+        if (results.length === 0) {
+            return response.status(404).json({ error: '사용자를 찾을 수 없습니다.' });
+        }
+        response.json({ chapter: results[0].my_chapter });
+    });
+});
+
 
 
 
