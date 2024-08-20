@@ -1,4 +1,3 @@
-// 4-1. 라우터 모듈 가져오기
 const express = require('express');
 const router = express.Router();
 const conn = require('../config/database')
@@ -82,7 +81,9 @@ router.post('/Mypage/:userId', (req, res) => {
         return res.status(401).json({ error: "로그인이 필요합니다." });
     }
 
-    const sql = 'SELECT * FROM user WHERE user_id = ?';
+    const sql = ' SELECT * FROM USER WHERE USER.user_id = ? ';
+
+
 
     conn.query(sql, [user_id], (err, rows) => {
         if (err) {
@@ -94,6 +95,29 @@ router.post('/Mypage/:userId', (req, res) => {
         } else {
             res.status(404).json({ error: "사용자를 찾을 수 없습니다." });
             
+        }
+    });
+});
+router.post('/Myque_count/:userId', (req, res) => {
+    // 로그인된 사용자의 ID를 세션에서 가져옵니다.
+    const user_id = req.params.userId
+
+    if (!user_id) {
+        return res.status(401).json({ error: "로그인이 필요합니다." });
+    }
+
+    const sql = 'SELECT COUNT(*) AS question_count FROM question_board WHERE user_id = ?';
+
+    conn.query(sql, [user_id], (err, rows) => {
+        if (err) {
+            console.error("문제 수 조회 쿼리 오류:", err);
+            return res.status(500).json({ error: "문제 수 조회 실패", details: err.message });
+        }
+        console.log("쿼리 결과:", rows); // 로그 추가
+        if (rows.length > 0) {
+            res.status(200).json({ question_count: rows[0].question_count }); // 문제 수 반환
+        } else {
+            res.status(404).json({ error: "사용자를 찾을 수 없습니다." });
         }
     });
 });
@@ -131,3 +155,4 @@ router.post('/Mypage/:userId', (req, res) => {
 
 // 4-2. 라우터 모듈 내보내기
 module.exports = router;
+
